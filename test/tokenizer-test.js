@@ -49,6 +49,14 @@ describe('TypeaheadTokenizer Component', function() {
     beforeEach(function() {
       this.component = TestUtils.renderIntoDocument(<Tokenizer
         options={BEATLES}
+        customClasses={{
+            input: 'topcoat-text-input',
+            results: 'topcoat-list__container',
+            listItem: 'topcoat-list__item',
+            listAnchor: 'topcoat-list__link',
+            token: 'topcoat-list__token',
+            customAdd: 'topcoat-custom__token'
+        }}
         />
       );
     });
@@ -146,6 +154,19 @@ describe('TypeaheadTokenizer Component', function() {
         var tokens = TestUtils.scryRenderedComponentsWithType(this.component, Token);
         assert.equal(tokens[tokens.length - 1].props.children, itemText);
       });
+
+      it('created token should have customClass name', function() {
+        var results = simulateTokenInput(this.component, 'o');
+        var secondItem = results[1].getDOMNode().innerText;
+        var node = this.component.refs.typeahead.refs.entry.getDOMNode();
+        TestUtils.Simulate.keyDown(node, { keyCode: Keyevent.DOM_VK_DOWN });
+        TestUtils.Simulate.keyDown(node, { keyCode: Keyevent.DOM_VK_DOWN });
+        TestUtils.Simulate.keyDown(node, { keyCode: Keyevent.DOM_VK_RETURN });
+        var Tokens = TestUtils.scryRenderedComponentsWithType(this.component, Token);
+        assert.equal(Tokens[0].props.children, secondItem);
+        assert.equal(true, Tokens[0].getDOMNode().getAttribute('class').match(/topcoat-list__token/)[0] == 'topcoat-list__token')
+      });
+
     });
 
     describe('AllowCustomValues property test', function() {

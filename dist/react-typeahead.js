@@ -1,4 +1,4 @@
-!function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.ReactTypeahead=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.ReactTypeahead = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/hueyhu/Code/react-typeahead/node_modules/fuzzy/lib/fuzzy.js":[function(require,module,exports){
 /*
  * Fuzzy
  * https://github.com/myork/fuzzy
@@ -136,7 +136,7 @@ fuzzy.filter = function(pattern, arr, opts) {
 }());
 
 
-},{}],2:[function(require,module,exports){
+},{}],"/Users/hueyhu/Code/react-typeahead/src/keyevent.js":[function(require,module,exports){
 /**
  * PolyFills make me sad
  */
@@ -151,7 +151,7 @@ KeyEvent.DOM_VK_TAB = KeyEvent.DOM_VK_TAB || 9;
 
 module.exports = KeyEvent;
 
-},{}],3:[function(require,module,exports){
+},{}],"/Users/hueyhu/Code/react-typeahead/src/react-typeahead.js":[function(require,module,exports){
 var Typeahead = require('./typeahead');
 var Tokenizer = require('./tokenizer');
 
@@ -160,7 +160,7 @@ module.exports = {
   Tokenizer: Tokenizer
 };
 
-},{"./tokenizer":4,"./typeahead":6}],4:[function(require,module,exports){
+},{"./tokenizer":"/Users/hueyhu/Code/react-typeahead/src/tokenizer/index.js","./typeahead":"/Users/hueyhu/Code/react-typeahead/src/typeahead/index.js"}],"/Users/hueyhu/Code/react-typeahead/src/tokenizer/index.js":[function(require,module,exports){
 /**
  * @jsx React.DOM
  */
@@ -297,7 +297,7 @@ var TypeaheadTokenizer = React.createClass({displayName: "TypeaheadTokenizer",
 
 module.exports = TypeaheadTokenizer;
 
-},{"../keyevent":2,"../typeahead":6,"./token":5,"react":"react"}],5:[function(require,module,exports){
+},{"../keyevent":"/Users/hueyhu/Code/react-typeahead/src/keyevent.js","../typeahead":"/Users/hueyhu/Code/react-typeahead/src/typeahead/index.js","./token":"/Users/hueyhu/Code/react-typeahead/src/tokenizer/token.js","react":"react"}],"/Users/hueyhu/Code/react-typeahead/src/tokenizer/token.js":[function(require,module,exports){
 /**
  * @jsx React.DOM
  */
@@ -317,7 +317,7 @@ var Token = React.createClass({displayName: "Token",
 
   render: function() {
     return (
-      React.createElement("div", React.__spread({},  this.props, {className: "typeahead-token"}), 
+      React.createElement("div", React.__spread({},  this.props, {className: this.props.className}), 
         this._renderHiddenInput(), 
         this.props.children, 
         this._renderCloseButton()
@@ -355,7 +355,7 @@ var Token = React.createClass({displayName: "Token",
 
 module.exports = Token;
 
-},{"react":"react"}],6:[function(require,module,exports){
+},{"react":"react"}],"/Users/hueyhu/Code/react-typeahead/src/typeahead/index.js":[function(require,module,exports){
 /**
  * @jsx React.DOM
  */
@@ -594,7 +594,7 @@ var Typeahead = React.createClass({displayName: "Typeahead",
 
 module.exports = Typeahead;
 
-},{"../keyevent":2,"./selector":8,"fuzzy":1,"react/addons":"react/addons"}],7:[function(require,module,exports){
+},{"../keyevent":"/Users/hueyhu/Code/react-typeahead/src/keyevent.js","./selector":"/Users/hueyhu/Code/react-typeahead/src/typeahead/selector.js","fuzzy":"/Users/hueyhu/Code/react-typeahead/node_modules/fuzzy/lib/fuzzy.js","react/addons":"react/addons"}],"/Users/hueyhu/Code/react-typeahead/src/typeahead/option.js":[function(require,module,exports){
 /**
  * @jsx React.DOM
  */
@@ -667,7 +667,7 @@ var TypeaheadOption = React.createClass({displayName: "TypeaheadOption",
 
 module.exports = TypeaheadOption;
 
-},{"react/addons":"react/addons"}],8:[function(require,module,exports){
+},{"react/addons":"react/addons"}],"/Users/hueyhu/Code/react-typeahead/src/typeahead/selector.js":[function(require,module,exports){
 /**
  * @jsx React.DOM
  */
@@ -800,5 +800,5 @@ var TypeaheadSelector = React.createClass({displayName: "TypeaheadSelector",
 
 module.exports = TypeaheadSelector;
 
-},{"./option":7,"react/addons":"react/addons"}]},{},[3])(3)
+},{"./option":"/Users/hueyhu/Code/react-typeahead/src/typeahead/option.js","react/addons":"react/addons"}]},{},["/Users/hueyhu/Code/react-typeahead/src/react-typeahead.js"])("/Users/hueyhu/Code/react-typeahead/src/react-typeahead.js")
 });

@@ -17,7 +17,7 @@ var Token = React.createClass({
 
   render: function() {
     return (
-      <div {...this.props} className="typeahead-token">
+      <div {...this.props} className={this.props.className}>
         {this._renderHiddenInput()}
         {this.props.children}
         {this._renderCloseButton()}
