@@ -151,7 +151,6 @@ KeyEvent.DOM_VK_TAB = KeyEvent.DOM_VK_TAB || 9;
 
 module.exports = KeyEvent;
 
-
 },{}],3:[function(require,module,exports){
 var Typeahead = require('./typeahead');
 var Tokenizer = require('./tokenizer');
@@ -160,7 +159,6 @@ module.exports = {
   Typeahead: Typeahead,
   Tokenizer: Tokenizer
 };
-
 
 },{"./tokenizer":4,"./typeahead":6}],4:[function(require,module,exports){
 /**
@@ -193,7 +191,9 @@ var TypeaheadTokenizer = React.createClass({displayName: "TypeaheadTokenizer",
 
   getInitialState: function() {
     return {
-      selected: this.props.defaultSelected
+      // We need to copy this to avoid incorrect sharing
+      // of state across instances (e.g., via getDefaultProps())
+      selected: this.props.defaultSelected.slice(0)
     };
   },
 
@@ -218,10 +218,10 @@ var TypeaheadTokenizer = React.createClass({displayName: "TypeaheadTokenizer",
     var classList = React.addons.classSet(tokenClasses);
     var result = this.state.selected.map(function(selected) {
       return (
-        React.createElement(Token, {key:  selected, className: classList, 
+        React.createElement(Token, {key: selected, className: classList, 
           onRemove:  this._removeTokenForValue, 
           name:  this.props.name}, 
-           selected 
+          selected 
         )
       );
     }, this);
@@ -301,7 +301,6 @@ var TypeaheadTokenizer = React.createClass({displayName: "TypeaheadTokenizer",
 
 module.exports = TypeaheadTokenizer;
 
-
 },{"../keyevent":2,"../typeahead":6,"./token":5,"react":"react"}],5:[function(require,module,exports){
 /**
  * @jsx React.DOM
@@ -365,7 +364,6 @@ var Token = React.createClass({displayName: "Token",
 });
 
 module.exports = Token;
-
 
 },{"react":"react"}],6:[function(require,module,exports){
 /**
@@ -606,7 +604,6 @@ var Typeahead = React.createClass({displayName: "Typeahead",
 
 module.exports = Typeahead;
 
-
 },{"../keyevent":2,"./selector":8,"fuzzy":1,"react/addons":"react/addons"}],7:[function(require,module,exports){
 /**
  * @jsx React.DOM
@@ -677,7 +674,6 @@ var TypeaheadOption = React.createClass({displayName: "TypeaheadOption",
 
 module.exports = TypeaheadOption;
 
-
 },{"react/addons":"react/addons"}],8:[function(require,module,exports){
 /**
  * @jsx React.DOM
@@ -743,13 +739,13 @@ var TypeaheadSelector = React.createClass({displayName: "TypeaheadSelector",
           hover: this.state.selectionIndex === results.length, 
           customClasses: this.props.customClasses, 
           onClick: this._onClick.bind(this, result)}, 
-           result 
+          result 
         )
       );
     }, this);
 
 
-    return React.createElement("ul", {className: classList},  results );
+    return React.createElement("ul", {className: classList}, results );
   },
 
   setSelectionIndex: function(index) {
@@ -810,7 +806,6 @@ var TypeaheadSelector = React.createClass({displayName: "TypeaheadSelector",
 });
 
 module.exports = TypeaheadSelector;
-
 
 },{"./option":7,"react/addons":"react/addons"}]},{},[3])(3)
 });
