@@ -214,7 +214,8 @@ var Typeahead = React.createClass({
           className={inputClassList}
           value={this.state.entryValue}
           defaultValue={this.props.defaultValue}
-          onChange={this._onTextEntryUpdated} onKeyDown={this._onKeyDown} />
+          onChange={this._onTextEntryUpdated} onKeyDown={this._onKeyDown} 
+          autocomplete="off" />
         { this._renderIncrementalSearchResults() }
       </div>
     );

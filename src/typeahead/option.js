@@ -52,7 +52,7 @@ var TypeaheadOption = React.createClass({
 
   _getClasses: function() {
     var classes = {
-      "typeahead-option": true,
+      "typeahead-option": true
     };
     classes[this.props.customClasses.listAnchor] = !!this.props.customClasses.listAnchor;
 

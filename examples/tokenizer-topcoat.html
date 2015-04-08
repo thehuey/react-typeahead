@@ -46,6 +46,9 @@
     <div id="main">
       <h1>Topcoat + React.Tokenizer</h1>
       <div id="typeahead"></div>
+
+      <div id="typeahead2"></div>
+      
     </div>
 
     <script type="text/jsx">
@@ -73,6 +76,21 @@
           customAdd: "topcoat-addme"
         }} />,
       document.getElementById("typeahead")
+    );
+
+    React.render(
+      <ReactTypeahead.Tokenizer
+        options={req.response.split('\n')}
+        allowCustomValues={4}
+        customClasses={{
+          typeahead: "topcoat-list",
+          input: "topcoat-text-input",
+          results: "topcoat-list__container",
+          listItem: "topcoat-list__item",
+          token: "topcoat-button",
+          customAdd: "topcoat-addme"
+        }} />,
+      document.getElementById("typeahead2")
     );
   };
 
