@@ -700,7 +700,7 @@ var TypeaheadOption = React.createClass({displayName: "TypeaheadOption",
 
   _getClasses: function() {
     var classes = {
-      "typeahead-option": true,
+      "typeahead-option": true
     };
     classes[this.props.customClasses.listAnchor] = !!this.props.customClasses.listAnchor;
 
@@ -794,7 +794,7 @@ var TypeaheadSelector = React.createClass({displayName: "TypeaheadSelector",
   setSelectionIndex: function(index) {
     this.setState({
       selectionIndex: index,
-      selection: this.getSelectionForIndex(index),
+      selection: this.getSelectionForIndex(index)
     });
   },
 
